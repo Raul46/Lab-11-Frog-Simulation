@@ -39,7 +39,20 @@ public class FrogSimulation
     */
     public boolean simulate()
     {
-      
+        int number = o;
+        for(int i = 0; i<= maxHops; i++)
+        {
+            number+=hopDistance();
+            if(number>=galDistance)
+            {
+                return true;
+            }
+            else if(number < 0)
+            {
+                return false;
+            }
+        }
+        return false;      
     }
     
     /**
@@ -50,7 +63,16 @@ public class FrogSimulation
      */
     public double runSimulations(int num)
     {
-        
+        double tests = 0;
+        for(int i = 0; i<=num; i++)
+        {
+           boolean simulation = simulate();
+            if(simulation == true)
+            {
+                passed++;
+            }
+        }
+        return (passed / num);     
     }
     
 }
